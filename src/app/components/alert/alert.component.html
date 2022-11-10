@@ -1,0 +1,11 @@
+<div
+  *ngIf="isShown"
+  class="alert alert-danger text-center fixed-top"
+  [ngClass]="{
+    'alert-danger': state === 'error',
+    'alert-success': state === 'success'
+  }"
+  role="alert"
+>
+  {{ message }}
+</div>

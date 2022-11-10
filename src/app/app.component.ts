@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ClientsService } from './services/clients.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'angular-info-page';
+export class AppComponent implements OnInit {
+
+  constructor(private clientService: ClientsService) {}
+
+  ngOnInit() {
+    this.clientService.fetchClients();
+  }
 }

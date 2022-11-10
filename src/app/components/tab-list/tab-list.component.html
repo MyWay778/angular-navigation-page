@@ -1,0 +1,29 @@
+<section class="d-inline-block border border-top-0 rounded">
+  <nav>
+    <ul class="d-flex list-unstyled">
+      <li
+        *ngFor="let tab of tabs; let i = index"
+        class="px-3 py-1 border border-bottom-0 border-right-0 rounded-top"
+        [ngClass]="{
+          'border-right-0': i < tabs.length - 1,
+          'active': tab.key === activeTab
+        }"
+        [ngStyle]="{
+          'margin-left': i === 0 ? '-1px' : '0',
+          'margin-right': i === tabs.length - 1 ? '-1px' : '0'
+        }"
+      >
+        <a
+          routerLink="/"
+          [queryParams]="{ tab: tab.id }"
+          class="text-dark"
+          (click)="handleTabClick(tab.key)"
+          >{{ tab.title }}</a
+        >
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <ng-content></ng-content>
+  </div>
+</section>

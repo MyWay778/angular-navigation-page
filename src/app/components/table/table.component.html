@@ -1,0 +1,17 @@
+<table class="table text-center">
+  <thead>
+    <tr>
+      <th *ngFor="let column of columns" class="border-0">
+        {{ column.title }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of data">
+      <!-- Creating table rows by looking up the corresponding value using the column keys -->
+      <td *ngFor="let _ of row | keyvalue; let i = index">
+        {{ row[columns[i].key] }} 
+      </td>
+    </tr>
+  </tbody>
+</table>

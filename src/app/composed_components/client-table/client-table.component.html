@@ -1,0 +1,15 @@
+<app-tab-list
+  [tabs]="tabs"
+  [activeTab]="activeTab"
+  (tabClick)="handleTabClick($event)"
+>
+  <app-table
+    *ngIf="!isLoading; else loading"
+    [columns]="tableColumns"
+    [data]="$any(clientsByType[activeTab])"
+  ></app-table>
+
+  <ng-template #loading>
+    <app-spinner></app-spinner>
+  </ng-template>
+</app-tab-list>
